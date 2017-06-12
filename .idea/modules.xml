@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/custom-lint-rules.iml" filepath="$PROJECT_DIR$/custom-lint-rules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lintlib/lintlib.iml" filepath="$PROJECT_DIR$/lintlib/lintlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lintrules/lintrules.iml" filepath="$PROJECT_DIR$/lintrules/lintrules.iml" />
+    </modules>
+  </component>
+</project>

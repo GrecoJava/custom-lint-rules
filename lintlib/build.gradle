@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion _compileSdkVersion
+    buildToolsVersion _buildToolsVersion
+    defaultConfig {
+        minSdkVersion _minSdkVersion
+        targetSdkVersion _targetSdkVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+configurations {
+    lintChecks
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${_dep_android_support_test_espresso}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${_dep_android_support}"
+    compile "com.android.support.constraint:constraint-layout:${_dep_android_support_constraintlayout}"
+    testCompile "junit:junit:${_dep_junit}"
+
+    lintChecks project(path: ':lintrules', configuration: 'lintChecks')
+}
+
+task copyLintJar(type: Copy) {
+    from(configurations.lintChecks) {
+        rename {
+            String filename -> 'lint.jar'
+        }
+    }
+    into 'build/intermediates/lint/'
+}
+
+//task copyLintReleaseAar(type: Copy) {
+//    doFirst {
+//        println 'starting copyLintReleaseAar'
+//    }
+//    from("${buildDir}/outputs/aar/lintlib-release.aar")
+//    into '../lintdemolibrelease/'
+//    doLast {
+//        println 'finishing copyLintReleaseAar'
+//    }
+//}
+//
+//project.afterEvaluate {
+//    def compileLintTask = project.tasks.find { it.name == 'compileLint' }
+//    compileLintTask.dependsOn(copyLintJar)
+//    copyLintReleaseAar.mustRunAfter(assembleRelease)
+//}
+
