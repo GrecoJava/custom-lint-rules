@@ -1,32 +1,35 @@
-apply plugin: 'java'
+apply plugin: 'java-library'
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
 
-configurations {
-    lintChecks
-}
 
 dependencies {
-    // compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.tools.lint:lint:${_dep_android_tools}"
-    compile "com.android.tools.lint:lint-api:${_dep_android_tools}"
-    compile "com.android.tools.lint:lint-checks:${_dep_android_tools}"
+    compileOnly("com.android.tools.lint:lint-api:${_dep_lint_version}")
+    compileOnly("com.android.tools.lint:lint-checks:${_dep_lint_version}")
 
-    compile "com.android.tools:sdklib:${_dep_android_tools}"
-    compile "com.android.tools:repository:${_dep_android_tools}"
-
-    compile "org.codehaus.groovy:groovy-all:2.4.7"
-
-    testCompile "com.android.tools.lint:lint:${_dep_android_tools}"
-    testCompile "com.android.tools.lint:lint-tests:${_dep_android_tools}"
-    testCompile "org.easytesting:fest-assert-core:${_dep_fest}"
-    
-    lintChecks files(jar)
+    testImplementation("com.android.tools.lint:lint:${_dep_lint_version}")
+    testImplementation("com.android.tools.lint:lint-tests:${_dep_lint_version}")
 }
 
 jar {
     manifest {
-        attributes 'Lint-Registry': 'biz.davidpearson.android.customlintrules.CustomIssueRegistry'
+        attributes('Lint-Registry-v2': 'biz.davidpearson.android.customlintrules' +
+                '.CustomIssueRegistry')
     }
+}
+
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }

@@ -2,43 +2,46 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion _compileSdkVersion
-    buildToolsVersion _buildToolsVersion
+
     defaultConfig {
         minSdkVersion _minSdkVersion
         targetSdkVersion _targetSdkVersion
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
 }
 
-configurations {
-    lintChecks
-}
+//configurations {
+//    lintChecks
+//}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${_dep_android_support_test_espresso}", {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile "com.android.support:appcompat-v7:${_dep_android_support}"
-    compile "com.android.support.constraint:constraint-layout:${_dep_android_support_constraintlayout}"
-    testCompile "junit:junit:${_dep_junit}"
+    // implementation(fileTree(dir: 'libs', include: ['*.jar']))
 
-    lintChecks project(path: ':lintrules', configuration: 'lintChecks')
+//    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+//    implementation('androidx.appcompat:appcompat:1.1.0')
+//    implementation('androidx.constraintlayout:constraintlayout:1.1.3')
+//    testImplementation("junit:junit:${_dep_junit}")
+
+    // lintPublish(project(path: ':lintrules', configuration: 'lintChecks'))
+    lintPublish(project(path: ':lintrules'))
+    // lintChecks(project(path: ':lintrules'))
 }
 
-task copyLintJar(type: Copy) {
-    from(configurations.lintChecks) {
-        rename {
-            String filename -> 'lint.jar'
-        }
-    }
-    into 'build/intermediates/lint/'
-}
+//task copyLintJar(type: Copy) {
+//    from(configurations.lintChecks) {
+//        rename {
+//            String filename -> 'lint.jar'
+//        }
+//    }
+//    into 'build/intermediates/lint/'
+//}
 
 //task copyLintReleaseAar(type: Copy) {
 //    doFirst {
@@ -56,4 +59,101 @@ task copyLintJar(type: Copy) {
 //    compileLintTask.dependsOn(copyLintJar)
 //    copyLintReleaseAar.mustRunAfter(assembleRelease)
 //}
+
+apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
+
+apply plugin: 'maven-publish'
+
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
+
+bintray {
+    user = bintray_user
+    key = bintray_apikey
+    publications = ['MyPublication']
+    override = 'true'
+    pkg {
+        repo = 'maven'
+        name = 'custom-lint-rules'
+        licenses = ['Apache-2.0']
+        websiteUrl = 'https://github.com/GrecoJava/custom-lint-rules'
+        issueTrackerUrl = 'https://github.com/GrecoJava/custom-lint-rules/issues'
+        vcsUrl = 'https://github.com/GrecoJava/custom-lint-rules.git'
+        labels = ['android', 'lint']
+        githubRepo = 'GrecoJava/custom-lint-rules'
+        githubReleaseNotesFile = 'README.md'
+        version {
+            name = libraryVersion
+            desc = 'Updated to current Lint API'
+            released = new Date()
+        }
+    }
+}
+
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "grecojava"
+            name "David B. Pearson"
+            email "grecojava@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/GrecoJava/custom-lint-rules"
+    }
+}
+
+// Create the publication with the pom configuration:
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            artifact("${buildDir}/outputs/aar/lintlib-release.aar")
+            artifact("../lintrules/build/libs/lintrules-javadoc.jar") {
+                classifier 'javadoc'
+                extension 'jar'
+            }
+            artifact("../lintrules/build/libs/lintrules-sources.jar") {
+                classifier 'sources'
+                extension 'jar'
+            }
+
+            groupId 'biz.davidpearson.android'
+            artifactId 'custom-lint-rules'
+            version libraryVersion
+            pom.packaging = 'aar'
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description',
+                                'A small library of lint rules that can be applied to an Android ' +
+                                        'project.')
+                root.appendNode('name', 'Custom Lint Rules')
+                root.appendNode('url', 'https://github.com/GrecoJava/custom-lint-rules')
+                root.children().last() + pomConfig
+
+                def dependenciesNode = root.appendNode('dependencies')
+
+                configurations.compile.allDependencies.each {
+                    if (it.group != null && it.name != null) {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                    }
+                }
+            }
+        }
+    }
+}
 
