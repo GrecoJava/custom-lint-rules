@@ -7,7 +7,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.0.2'
 
 
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
@@ -28,10 +28,10 @@ allprojects {
 
     ext {
         _minSdkVersion = 14
-        _targetSdkVersion = 29
-        _compileSdkVersion = 29
+        _targetSdkVersion = 30
+        _compileSdkVersion = 30
 
-        _dep_lint_version = "26.5.3" // AGP version x.y.z -> x+23.y.z
+        _dep_lint_version = "27.0.2" // AGP version x.y.z -> x+23.y.z
 
         _dep_android_support = '26.0.0'
         _dep_android_support_constraintlayout = '1.0.2'
@@ -53,7 +53,7 @@ allprojects {
         siteUrl = 'https://github.com/GrecoJava/custom-lint-rules'
         gitUrl = 'https://github.com/GrecoJava/custom-lint-rules.git'
 
-        libraryVersion = '0.2.0'
+        libraryVersion = '0.3.0'
 
         developerId = 'GrecoJava'
         developerName = 'David Pearson'

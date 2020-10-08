@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/custom-lint-rules.iml" filepath="$PROJECT_DIR$/custom-lint-rules.iml" group="custom-lint-rules" />
-      <module fileurl="file://$PROJECT_DIR$/lintlib/lintlib.iml" filepath="$PROJECT_DIR$/lintlib/lintlib.iml" group="custom-lint-rules/lintlib" />
-      <module fileurl="file://$PROJECT_DIR$/lintrules/lintrules.iml" filepath="$PROJECT_DIR$/lintrules/lintrules.iml" group="custom-lint-rules/lintrules" />
+      <module fileurl="file://$PROJECT_DIR$/custom-lint-rules.iml" filepath="$PROJECT_DIR$/custom-lint-rules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lintlib/custom-lint-rules.lintlib.iml" filepath="$PROJECT_DIR$/.idea/modules/lintlib/custom-lint-rules.lintlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lintrules/custom-lint-rules.lintrules.iml" filepath="$PROJECT_DIR$/.idea/modules/lintrules/custom-lint-rules.lintrules.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.3.0 *(2020-10-07)*
+----------------------------
+Updated for use with Android Gradle Plugin 4.0.2
+- built using Android Lint 27.0.2
+
 Version 0.2.0 *(2020-01-02)*
 ----------------------------
 Updated to use the new lintPublish API
@@ -8,7 +13,6 @@ Updated to use the new lintPublish API
 
 Version 0.1.1 *(2017-06-11)*
 ----------------------------
-
 
 Version 0.1.0 *(2017-06-11)*
 ----------------------------
