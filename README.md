@@ -30,7 +30,7 @@ Usage
 -----
 
 ```groovy
-implementation 'biz.davidpearson.android:custom-lint-rules:0.2.0'
+implementation 'biz.davidpearson.android:custom-lint-rules:0.3.0'
 ```
 
 Credits
