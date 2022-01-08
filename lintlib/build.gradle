@@ -60,7 +60,7 @@ dependencies {
 //    copyLintReleaseAar.mustRunAfter(assembleRelease)
 //}
 
-apply plugin: 'com.jfrog.bintray'
+// apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'com.github.dcendents.android-maven'
 
 apply plugin: 'maven-publish'
@@ -70,28 +70,28 @@ apply plugin: 'maven-publish'
 //    archives sourcesJar
 //}
 
-bintray {
-    user = bintray_user
-    key = bintray_apikey
-    publications = ['MyPublication']
-    override = 'true'
-    pkg {
-        repo = 'maven'
-        name = 'custom-lint-rules'
-        licenses = ['Apache-2.0']
-        websiteUrl = 'https://github.com/GrecoJava/custom-lint-rules'
-        issueTrackerUrl = 'https://github.com/GrecoJava/custom-lint-rules/issues'
-        vcsUrl = 'https://github.com/GrecoJava/custom-lint-rules.git'
-        labels = ['android', 'lint']
-        githubRepo = 'GrecoJava/custom-lint-rules'
-        githubReleaseNotesFile = 'README.md'
-        version {
-            name = libraryVersion
-            desc = 'Updated to current Lint API'
-            released = new Date()
-        }
-    }
-}
+//bintray {
+//    user = bintray_user
+//    key = bintray_apikey
+//    publications = ['MyPublication']
+//    override = 'true'
+//    pkg {
+//        repo = 'maven'
+//        name = 'custom-lint-rules'
+//        licenses = ['Apache-2.0']
+//        websiteUrl = 'https://github.com/GrecoJava/custom-lint-rules'
+//        issueTrackerUrl = 'https://github.com/GrecoJava/custom-lint-rules/issues'
+//        vcsUrl = 'https://github.com/GrecoJava/custom-lint-rules.git'
+//        labels = ['android', 'lint']
+//        githubRepo = 'GrecoJava/custom-lint-rules'
+//        githubReleaseNotesFile = 'README.md'
+//        version {
+//            name = libraryVersion
+//            desc = 'Updated to current Lint API'
+//            released = new Date()
+//        }
+//    }
+//}
 
 // Create the pom configuration:
 def pomConfig = {
@@ -136,8 +136,8 @@ publishing {
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description',
-                                'A small library of lint rules that can be applied to an Android ' +
-                                        'project.')
+                        'A small library of lint rules that can be applied to an Android ' +
+                                'project.')
                 root.appendNode('name', 'Custom Lint Rules')
                 root.appendNode('url', 'https://github.com/GrecoJava/custom-lint-rules')
                 root.children().last() + pomConfig

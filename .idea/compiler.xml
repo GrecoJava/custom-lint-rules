@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="custom-lint-rules.lintlib" target="11" />
+      <module name="custom-lint-rules.lintlib" target="1.8" />
       <module name="lintrules" target="1.7" />
     </bytecodeTargetLevel>
   </component>
