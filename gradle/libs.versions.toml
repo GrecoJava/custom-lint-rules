@@ -1,0 +1,42 @@
+[versions]
+
+# https://maven.google.com/web/index.html#com.android.application:com.android.application.gradle.plugin
+androidGradlePlugin = "8.11.1"
+# https://maven.google.com/web/index.html#com.android.tools.lint:lint
+# AGP version x.y.z -> x+23.y.z
+androidLintVersion = "31.11.1"
+
+# Kotlin releases on GitHub - https://github.com/JetBrains/kotlin/releases/
+kotlin = "2.2.0"
+
+junit = '4.13.2'
+
+compileSdk = "36"
+minSdk = "23"
+targetSdk = "36"
+
+[libraries]
+android-lint-api = { module = "com.android.tools.lint:lint-api", version.ref = "androidLintVersion" }
+android-lint-checks = { module = "com.android.tools.lint:lint-checks", version.ref = "androidLintVersion" }
+android-lint-tests = { module = "com.android.tools.lint:lint-tests", version.ref = "androidLintVersion" }
+android-lint-lint = { module = "com.android.tools.lint:lint", version.ref = "androidLintVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.1" }
+
+
+[bundles]
+
+
+[plugins]
+
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-lint = { id = "com.android.lint", version.ref = "androidGradlePlugin" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+# [GitHub](https://github.com/vanniktech/gradle-maven-publish-plugin)
+gradle-maven-publish-plugin = { id = "com.vanniktech.maven.publish", version = "0.34.0" }

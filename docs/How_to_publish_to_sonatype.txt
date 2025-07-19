@@ -1,0 +1,8 @@
+
+Guide followed: https://proandroiddev.com/publishing-your-first-android-library-to-mavencentral-be2c51330b88
+
+Plugin: https://github.com/vanniktech/gradle-maven-publish-plugin
+
+
+run
+$ .\gradlew :lintrules:sourcesJar :lintrules:javadocJar publish --no-daemon --no-parallel

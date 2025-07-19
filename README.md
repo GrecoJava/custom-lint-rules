@@ -16,38 +16,42 @@ The following lint rules are provided:
                   ~~~~~~~~~~~~~~~
             }
 
-To disable a lint rule, in your modules's `build.gradle`, add a `disable` statement for the rule.  
+To disable a lint rule, in your modules's `build.gradle`, add a `disable` statement for the rule.
 
-```groovy
-    lintOptions {
+```kotlin
+android {
+    lint {
         ...
-        disable 'PrintStackTrace'
+        disable += ['PrintStackTrace']
         ...
     }
+}
 ```
 
 Usage
 -----
 
-```groovy
-implementation 'biz.davidpearson.android:custom-lint-rules:0.3.0'
+```kotlin
+implementation("biz.davidpearson.android:custom-lint-rules:0.4.0")
 ```
 
 Credits
 -------
-* The `.aar` production is based on the LinkedIn Engineering blog post [Writing Custom Lint Checks with Gradle](https://engineering.linkedin.com/android/writing-custom-lint-checks-gradle)
-* The lint rule code and tests are inspired by the lint rules in Jake Wharton's [Timber](https://github.com/JakeWharton/timber)  project.
 
+* The `.aar` production is based on the LinkedIn Engineering blog
+  post [Writing Custom Lint Checks with Gradle](https://engineering.linkedin.com/android/writing-custom-lint-checks-gradle)
+* The lint rule code and tests are inspired by the lint rules in Jake
+  Wharton's [Timber](https://github.com/JakeWharton/timber)  project.
 
 References
 ----------
-* [Google Samples Custom Lint Rules project](https://github.com/googlesamples/android-custom-lint-rules)
 
+* [Google Samples Custom Lint Rules project](https://github.com/googlesamples/android-custom-lint-rules)
 
 License
 -------
 
-    Copyright 2017-2020 David Pearson
+    Copyright 2017-2025 David Pearson
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

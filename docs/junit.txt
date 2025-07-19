@@ -1,0 +1,10 @@
+Can't Mix Annotations in a Single Test: While you can mix JUnit 4 and 5 tests in a project, you
+can't mix JUnit 4 and JUnit 5 annotations within the same test class.
+
+https://stackoverflow.com/questions/63047963/how-do-you-mix-junit5-and-junit4-for-the-sake-of-powermockito#:~:text=You%20can%20mix%20JUnit%204,everything%20else%2C%20including%20plain%20Mockito.
+
+https://stackoverflow.com/questions/54018589/junit-4-test-annotation-not-taken-into-account-when-filtering-by-tags/54021156#:~:text=You%20can't%20mix%20JUnit,to%20discover%20and%20execute%20tests.
+
+https://chatgpt.com/c/68641ddd-02f8-800e-b553-2854516ae823
+
+
