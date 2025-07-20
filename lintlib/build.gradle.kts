@@ -9,14 +9,7 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
-        // targetSdk = libs.versions.targetSdk.get().toInt()
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
-//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -26,9 +19,6 @@ android {
     }
 }
 
-//configurations {
-//    lintChecks
-//}
 
 dependencies {
     // implementation(fileTree(dir: 'libs', include: ['*.jar']))
@@ -41,7 +31,7 @@ dependencies {
 //    testImplementation("junit:junit:${_dep_junit}")
 
     // lintPublish(project(path: ':lintrules', configuration: 'lintChecks'))
-    implementation(project(":lintrules"))
+    // implementation(project(":lintrules"))
     lintPublish(project(":lintrules"))
     // lintChecks(project(path: ':lintrules'))
 }

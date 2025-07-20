@@ -20,15 +20,15 @@ dependencies {
 //    testImplementation(libs.androidx.appcompat)
 }
 
-//tasks.jar {
-//    manifest {
-//        attributes(
-//            mapOf(
-//                "Lint-Registry-v2" to "biz.davidpearson.android.customlintrules.CustomIssueRegistry"
-//            )
-//        )
-//    }
-//}
+tasks.jar {
+    manifest {
+        attributes(
+            mapOf(
+                "Lint-Registry-v2" to "biz.davidpearson.android.customlintrules.CustomIssueRegistry"
+            )
+        )
+    }
+}
 
 //task javadoc(type: Javadoc) {
 //    source = android.sourceSets.main.java.srcDirs

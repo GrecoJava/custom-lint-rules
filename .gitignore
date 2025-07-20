@@ -1,6 +1,9 @@
 # Built application files
 *.apk
 *.ap_
+*.aab
+*.aar
+output-metadata.json
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -38,9 +41,30 @@ captures/
 
 # Intellij
 *.iml
-.idea
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
 
 # Keystore files
 *.jks
+*.keystore
 
+# External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
+
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+# MacOS
+.DS_Store

@@ -13,7 +13,7 @@ import java.util.List;
 public class PrintStackTraceDetectorTest extends LintDetectorTest {
 
     //@Test
-    public void testPrintStackTracePresent() throws Exception {
+    public void testPrintStackTracePresent() {
 
         lint().files(java(""
                         + "package foo;\n"

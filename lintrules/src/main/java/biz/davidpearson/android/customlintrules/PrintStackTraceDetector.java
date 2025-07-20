@@ -3,6 +3,7 @@ package biz.davidpearson.android.customlintrules;
 import com.android.tools.lint.client.api.JavaEvaluator;
 import com.android.tools.lint.detector.api.*;
 import com.intellij.psi.PsiMethod;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.uast.UCallExpression;
 
 import java.util.Collections;
@@ -32,7 +33,8 @@ public final class PrintStackTraceDetector extends Detector implements Detector.
     }
 
     @Override
-    public void visitMethodCall(JavaContext context, UCallExpression call, PsiMethod method) {
+    public void visitMethodCall(@NotNull JavaContext context, @NotNull UCallExpression call,
+            @NotNull PsiMethod method) {
 
         String methodName = call.getMethodName();
         JavaEvaluator evaluator = context.getEvaluator();
@@ -42,7 +44,6 @@ public final class PrintStackTraceDetector extends Detector implements Detector.
             context.report(
                     ISSUE_PRINT_STACK_TRACE, call,
                     context.getLocation(call), "Do not use printStackTrace");
-            return;
         }
     }
 }

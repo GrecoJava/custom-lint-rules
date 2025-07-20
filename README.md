@@ -21,9 +21,7 @@ To disable a lint rule, in your modules's `build.gradle`, add a `disable` statem
 ```kotlin
 android {
     lint {
-        ...
         disable += ['PrintStackTrace']
-        ...
     }
 }
 ```
