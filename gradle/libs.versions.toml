@@ -1,10 +1,10 @@
 [versions]
 
 # https://maven.google.com/web/index.html#com.android.application:com.android.application.gradle.plugin
-androidGradlePlugin = "8.11.1"
+androidGradlePlugin = "8.12.0"
 # https://maven.google.com/web/index.html#com.android.tools.lint:lint
 # AGP version x.y.z -> x+23.y.z
-androidLintVersion = "31.11.1"
+androidLintVersion = "31.12.0"
 
 # Kotlin releases on GitHub - https://github.com/JetBrains/kotlin/releases/
 kotlin = "2.2.0"
